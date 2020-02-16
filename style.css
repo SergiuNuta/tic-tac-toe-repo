@@ -1,0 +1,78 @@
+body {
+  margin-top: 40px;
+  background: #383f46;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.container {
+  margin: 0 auto;
+  width: 400px;
+}
+
+#game {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#game > li {
+  list-style: none;
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #f1f1f1;
+  border: 1px solid red;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 40px;
+}
+
+#game > li.x {
+  font-size: 40px;
+  color: #661827;
+}
+
+#game > li.o {
+  font-size: 40px;
+  color: #485b6e;
+}
+
+#game > li:hover {
+  background: #f9f9f9;
+}
+
+.winner {
+  color: red;
+}
+
+#reset-game {
+  text-align: center;
+  border: none;
+  padding: 10px;
+  background: #ed4e6e;
+  color: #fff;
+  font-size: 1em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: 3px 2px;
+  border-radius: 2px;
+}
+
+#reset-game:hover {
+  background: #2c3e52;
+}
+/*# sourceMappingURL=style.css.map */
