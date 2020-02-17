@@ -1,5 +1,5 @@
 // const onload = () => {
-    $(document).ready(function(){
+    $(document).ready(function () {
 
         let playerOne = "X";
         let playerTwo = "O";
@@ -11,38 +11,42 @@
         let winnerContainer = $(".game-status");
         let reset = $("#reset-game");
     
+        const startGame = () => {
+            cells.on('click', (event) => {
+                
+                movesMade++;
         
-        cells.on('click', (event) => {
-            movesMade++;
+                if (currentTurn === 1) {
+                    event.target.innerHTML = playerOne;
+                    currentTurn++;
+                } else {
+                    event.target.innerHTML = playerTwo;
+                    currentTurn--;
+                }
+                if (checkForWiner()) {
+                    let theWinner = currentTurn === 1 ? playerTwo : playerOne;
+                    declareWinner(theWinner);
+                    cells.off();
+                }
+            }); 
+        } 
     
-            if (currentTurn === 1) {
-                event.target.innerHTML = playerOne;
-                currentTurn++;
-            } else {
-                event.target.innerHTML = playerTwo;
-                currentTurn--;
-            }
-            if (checkForWiner()) {
-                let theWinner = currentTurn === 1?playerTwo:playerOne;
-                declareWinner(theWinner);
-            }
-        });
-    
-        
         reset.on('click', (event) => {
             let moves = Array.prototype.slice.call($(".box"));
-            moves.map((m) =>  m.innerHTML = "");
-        winnerContainer.html('');
-        winnerContainer.css('display', "none");
-        currentTurn = 1;
-        movesMade = 0;
+            moves.map((m) => m.innerHTML = "");
+            winnerContainer.html('');
+            winnerContainer.css('display', "none");
+            currentTurn = 1;
+            movesMade = 0;
+            cells.off();
+            startGame();
     
         });
-    
+        startGame();
         const checkForWiner = () => {
             if (movesMade > 4) {
                 let moves = Array.prototype.slice.call($(".box"));
-                let results = moves.map(function(box) {
+                let results = moves.map(function (box) {
                     return box.innerHTML;
                 });
     
@@ -69,12 +73,31 @@
     
         const declareWinner = (winner) => {
             winnerContainer.css('display', "block");
-            // reset.css('display', 'block');
             winner = winner === playerOne ? 'X' : 'O';
             winnerContainer.html(winner + " Wins!");
         }
-        
+    
     });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //     const winningConditions = [
     //         [0, 1, 2],
@@ -113,13 +136,13 @@
     //         return victory;
     //     }
     
-      
+    
     
     //     const opponentTurn = () => {
     //         takeTurn(opponentChoice(), 'O');
     //         if (!checkForVictory())
     //         clickHandle();
-            
+    
     //         // disableListeners();
     //         // setTimeout(() => {
     //         //     takeTurn(opponentChoice(), 'O');
